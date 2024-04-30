@@ -1,71 +1,52 @@
 package clase15;
 
-import java.util.Arrays;
-
 public class DesafioEvaluado {
     public static void main(String[] args) {
 
-        // Ejercicio 1 - Visitas
-
-        if (args.length == 0) {
-            System.out.println("Debe proporcionar al menos un valor de visita diaria.");
+        if (args.length < 1) {
+            System.out.println("Debe proporcionar al menos un parámetro.");
             return;
         }
 
-        int[] visitasDiarias = new int[args.length];
-        for (int i = 0; i < args.length; i++) {
-            try {
-                visitasDiarias[i] = Integer.parseInt(args[i]);
-            } catch (NumberFormatException e) {
-                System.out.println("Los argumentos deben ser números enteros.");
-                return;
-            }
+        String parametro = args[0];
+
+        switch (parametro) {
+            case "visitas":
+                int[] visitasDiarias = construirArreglo(args);
+                System.out.println("El promedio de visitas diarias es: " + promedio(visitasDiarias));
+                break;
+            case "pasos":
+                int[] pasosDiarios = construirArreglo(args);
+                System.out.println("El promedio de pasos diarios es: " + clearSteps(pasosDiarios));
+                break;
+            case "multiplos":
+                int[] multiplosDe3 = construirArreglo(args);
+                double[] resultadoMultiplos3 = suma(multiplosDe3);
+                System.out.println("La suma de los múltiplos de 3 es: " + resultadoMultiplos3[0]);
+                System.out.println("El promedio de los múltiplos de 3 es: " + resultadoMultiplos3[1]);
+                break;
+            default:
+                System.out.println("Parámetro no reconocido. Opciones válidas: visitas, pasos, multiplos");
         }
+    }
 
-        System.out.println("El promedio de visitas diarias es: " + promedio(visitasDiarias));
-
-        // Ejercicio 2 - SmartWatch
-
-        /*
+    public static int[] construirArreglo(String[] args) {
         if (args.length == 0) {
-            System.out.println("Debe proporcionar al menos un valor de pasos diarios.");
-            return;
+            System.out.println("Debe proporcionar al menos un valor.");
+            return new int[0];
         }
 
-        int[] pasosDiarios = new int[args.length];
-        for (int i = 0; i < args.length; i++) {
+        int[] valores = new int[args.length];
+        for (int i = 1; i < args.length; i++) {
             try {
-                pasosDiarios[i] = Integer.parseInt(args[i]);
+                valores[i] = Integer.parseInt(args[i]);
             } catch (NumberFormatException e) {
                 System.out.println("Los argumentos deben ser números enteros.");
-                return;
+                return new int[0];
             }
         }
 
-        System.out.println("El promedio de pasos diarios entre 200 y 100.000 es: " + clearSteps(pasosDiarios));
-        */
-
-        // Ejercicio 3 y 4 - Múltiplos de tres (Suma y su respectivo promedio)
-
-        /*
-        if (args.length == 0) {
-            System.out.println("Debe proporcionar al menos un valor de pasos diarios.");
-            return;
-        }
-
-        int[] multiplosDe3 = new int[args.length];
-        for (int i = 0; i < args.length; i++) {
-            try {
-                multiplosDe3[i] = Integer.parseInt(args[i]);
-            } catch (NumberFormatException e) {
-                System.out.println("Los argumentos deben ser números enteros.");
-                return;
-            }
-        }
-
-        System.out.println("La suma de los múltiplos de 3 es: " + suma(multiplosDe3)[0]);
-        System.out.println("El promedio del valor anterior es: " + suma(multiplosDe3)[1]);
-        */
+        return valores;
     }
 
     static double promedio(int[] visitas) {
@@ -74,8 +55,8 @@ public class DesafioEvaluado {
         }
 
         int suma = 0;
-        for (int i = 0; i < visitas.length; i++) {
-            suma += visitas[i];
+        for (int visita : visitas) {
+            suma += visita;
         }
 
         return (double) suma / visitas.length;
@@ -87,9 +68,9 @@ public class DesafioEvaluado {
         }
 
         int suma = 0;
-        for (int i = 0; i < pasos.length; i++) {
-            if(pasos[i] > 200 && pasos[i] < 100000) {
-                suma += pasos[i];
+        for (int paso : pasos) {
+            if (paso > 200 && paso < 100000) {
+                suma += paso;
             }
         }
 
@@ -104,9 +85,9 @@ public class DesafioEvaluado {
         int suma = 0;
         int contador = 0;
 
-        for (int i = 0; i < multiplos.length; i++) {
-            if(multiplos[i] % 3 == 0) {
-                suma += multiplos[i];
+        for (int multiplo : multiplos) {
+            if (multiplo % 3 == 0) {
+                suma += multiplo;
                 contador++;
             }
         }
