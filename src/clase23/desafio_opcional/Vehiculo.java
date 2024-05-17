@@ -1,4 +1,4 @@
-package clase23.desafioOpcional;
+package clase23.desafio_opcional;
 
 public class Vehiculo {
     private String color;

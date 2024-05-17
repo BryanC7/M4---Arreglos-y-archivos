@@ -1,4 +1,4 @@
-package clase23.desafioOpcional;
+package clase23.desafio_opcional;
 
 public class Taxi extends Vehiculo {
     private int valorPasaje;

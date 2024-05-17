@@ -1,4 +1,4 @@
-package clase23.desafioOpcional;
+package clase23.desafio_opcional;
 
 public class Bus extends Vehiculo {
     private Integer cantidadAsientos;

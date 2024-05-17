@@ -1,4 +1,4 @@
-package clase23.desafioOpcional;
+package clase23.desafio_opcional;
 
 public class MainObjetos {
     public static void main(String[] args) {
