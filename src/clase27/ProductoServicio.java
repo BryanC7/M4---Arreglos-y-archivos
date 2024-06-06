@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class ProductoServicio {
     private ArrayList<String> listaProductos = new ArrayList<>();
     private ArrayList<Producto> productos = new ArrayList<>();
+    private Utilidad u = new Utilidad();
 
     public ProductoServicio() {}
 
@@ -31,6 +32,8 @@ public class ProductoServicio {
     }
 
     public void listarProductos() {
+        u.limpiarPantalla();
+        System.out.println("----- Lista de Productos -----");
         for (String producto : getListaProductos()) {
             System.out.println(producto);
         }
@@ -39,6 +42,7 @@ public class ProductoServicio {
     public void agregarProductos() {
         Scanner sc = new Scanner(System.in);
         Producto producto = new Producto();
+
         System.out.println("Crear Producto");
 
         System.out.println("Ingresar nombre artículo: ");
@@ -65,6 +69,7 @@ public class ProductoServicio {
         producto.setColor(sc.nextLine());
 
         getProductos().add(producto);
+        u.limpiarPantalla();
         System.out.println("Producto agregado: " + producto);
     }
 
